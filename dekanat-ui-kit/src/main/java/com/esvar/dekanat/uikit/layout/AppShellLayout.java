@@ -48,13 +48,19 @@ public class AppShellLayout extends AppLayout implements RouterLayout {
 
     private SideNav buildSideNav(List<AppModuleDescriptor> modules) {
         SideNav nav = new SideNav();
+
         modules.stream()
                 .sorted(Comparator.comparingInt(AppModuleDescriptor::getOrder))
                 .forEach(module -> {
-                    SideNavItem item = new SideNavItem(module.getName(), module.getRoute(), module.getIcon().create());
-                    item.setHighlightCondition(HighlightConditions.sameLocation());
+                    SideNavItem item = new SideNavItem(
+                            module.getName(),
+                            module.getRoute(),
+                            module.getIcon().create()
+                    );
                     nav.addItem(item);
                 });
+
         return nav;
     }
+
 }

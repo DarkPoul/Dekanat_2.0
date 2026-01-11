@@ -4,9 +4,9 @@ import com.esvar.dekanat.modules.studyplans.views.StudyPlansStartView;
 import com.esvar.dekanat.uikit.AppModuleDescriptor;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.icon.VaadinIcon;
-import org.springframework.stereotype.Component;
 
-@Component
+
+@org.springframework.stereotype.Component
 public class StudyPlansModuleDescriptor implements AppModuleDescriptor {
     @Override
     public String getName() {
