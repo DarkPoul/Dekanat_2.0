@@ -1,0 +1,13 @@
+:root {
+    --dk-bg:       var(--dk-gray-50);
+    --dk-surface:  #ffffff;
+
+    --dk-text:     #1f2937;
+    --dk-text-2:   #4b5563;
+
+    --dk-border:   rgba(0,0,0,0.08);
+
+    --dk-accent:   var(--dk-green-600);
+    --dk-accent-h: var(--dk-green-700);
+    --dk-accent-10: rgba(79, 138, 109, 0.12);
+}

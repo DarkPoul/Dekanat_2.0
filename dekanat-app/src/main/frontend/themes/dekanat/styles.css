@@ -1,0 +1,16 @@
+@import url("./tokens/_palette.css");
+@import url("./tokens/_semantic.css");
+@import url("./tokens/_lumo-overrides.css");
+
+@import url("./components/card.css");
+@import url("./views/home.css");
+
+html, body {
+    background: var(--dk-bg);
+}
+
+
+/* максимум 2-3 глобальні правила */
+html, body {
+    background: var(--dk-bg, #000);
+}

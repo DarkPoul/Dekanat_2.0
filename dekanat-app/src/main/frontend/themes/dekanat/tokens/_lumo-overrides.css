@@ -1,0 +1,14 @@
+:root {
+    --lumo-base-color: var(--dk-bg);
+
+    --lumo-body-text-color: var(--dk-text);
+    --lumo-secondary-text-color: var(--dk-text-2);
+
+    --lumo-primary-color: var(--dk-accent);
+    --lumo-primary-color-10pct: var(--dk-accent-10);
+    --lumo-primary-text-color: #ffffff;
+
+    --lumo-contrast-10pct: var(--dk-border);
+    --lumo-border-radius-m: 12px;
+    --lumo-border-radius-l: 16px;
+}

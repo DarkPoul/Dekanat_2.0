@@ -1,0 +1,49 @@
+.dk-home__root {
+    width: 100%;
+    padding: 12px 18px;
+    box-sizing: border-box;
+}
+
+.dk-home__title {
+    margin: 8px 0 12px 0;
+    color: var(--dk-text);
+}
+
+.dk-home__viewport {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    padding: 8px 0;
+}
+
+.dk-home__grid {
+    width: min(980px, 100%);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.dk-home__arrow {
+    width: 42px;
+    height: 42px;
+    border-radius: 999px;
+    border: 1px solid var(--dk-border);
+    color: var(--dk-text);
+    background: var(--dk-surface);
+}
+
+.dk-home__arrow.is-disabled {
+    opacity: 0.35;
+}
+
+/* Empty state */
+.dk-home__empty {
+    padding: 24px;
+    border: 1px dashed var(--dk-border);
+    border-radius: 16px;
+    width: min(980px, 100%);
+    text-align: center;
+    color: var(--dk-text-2);
+    background: var(--dk-surface);
+}

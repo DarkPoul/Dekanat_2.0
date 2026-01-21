@@ -1,0 +1,34 @@
+.dk-module-tile {
+    height: 86px;
+    width: 100%;
+    padding: 18px;
+    box-sizing: border-box;
+
+    background: var(--dk-surface);
+    color: var(--dk-text);
+    border: 1px solid var(--dk-border);
+    border-radius: 16px;
+
+    box-shadow: var(--lumo-box-shadow-s);
+    transition: transform 120ms ease, box-shadow 120ms ease, border-color 120ms ease;
+}
+
+/* Робимо кнопку схожою на плитку (Vaadin Button всередині має свій layout) */
+.dk-module-tile--left {
+    justify-content: flex-start;
+    text-align: left;
+}
+
+/* Hover */
+.dk-module-tile:not(.dk-module-tile--placeholder):hover {
+    transform: translateY(-1px);
+    box-shadow: var(--lumo-box-shadow-m);
+    border-color: color-mix(in srgb, var(--dk-accent) 35%, var(--dk-border));
+}
+
+/* Placeholder */
+.dk-module-tile--placeholder {
+    border-style: dashed;
+    opacity: 0.35;
+    box-shadow: none;
+}
