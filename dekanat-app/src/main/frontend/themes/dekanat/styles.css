@@ -7,10 +7,5 @@
 
 html, body {
     background: var(--dk-bg);
-}
-
-
-/* максимум 2-3 глобальні правила */
-html, body {
-    background: var(--dk-bg, #000);
+    color: var(--dk-text);
 }

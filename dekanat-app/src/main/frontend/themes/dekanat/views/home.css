@@ -24,16 +24,22 @@
     gap: 18px;
 }
 
-.dk-home__arrow {
+vaadin-button.dk-home__arrow {
+    width: 42px;
+    height: 42px;
+}
+
+vaadin-button.dk-home__arrow::part(button) {
     width: 42px;
     height: 42px;
     border-radius: 999px;
     border: 1px solid var(--dk-border);
     color: var(--dk-text);
     background: var(--dk-surface);
+    box-shadow: var(--lumo-box-shadow-xs);
 }
 
-.dk-home__arrow.is-disabled {
+vaadin-button.dk-home__arrow.is-disabled::part(button) {
     opacity: 0.35;
 }
 

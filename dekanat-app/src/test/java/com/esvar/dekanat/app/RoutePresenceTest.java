@@ -7,6 +7,7 @@ import com.esvar.dekanat.modules.students.views.StudentsView;
 import com.esvar.dekanat.modules.studyplans.views.StudyPlansEmptyView;
 import com.esvar.dekanat.modules.studyplans.views.StudyPlansPlanView;
 import com.esvar.dekanat.modules.studyplans.views.StudyPlansStartView;
+import com.esvar.dekanat.app.views.HomeView;
 import com.vaadin.flow.router.Route;
 import org.junit.jupiter.api.Test;
 
@@ -21,6 +22,7 @@ class RoutePresenceTest {
                 StudyPlansStartView.class, "study-plans",
                 StudyPlansPlanView.class, "study-plans/plan",
                 StudyPlansEmptyView.class, "study-plans/empty",
+                HomeView.class, "",
                 StudentsView.class, "students",
                 GradesView.class, "grades",
                 ReportsView.class, "reports",
