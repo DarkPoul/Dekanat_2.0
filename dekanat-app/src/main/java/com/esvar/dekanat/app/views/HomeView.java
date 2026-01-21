@@ -6,11 +6,9 @@ import com.esvar.dekanat.uikit.layout.BaseView;
 import com.esvar.dekanat.uikit.util.ModuleRegistry;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
-import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
-import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
@@ -75,7 +73,6 @@ public class HomeView extends BaseView {
     }
 
     private void setupArrow(Button b, boolean isUp) {
-        b.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
         b.addClassName("dk-home__arrow");
         b.addClassName(isUp ? "dk-home__arrow--up" : "dk-home__arrow--down");
         b.setAriaLabel(isUp ? "Прокрутити вгору" : "Прокрутити вниз");
@@ -130,11 +127,7 @@ public class HomeView extends BaseView {
 
     private Button createModuleTile(AppModuleDescriptor module) {
         Button tile = new Button(module.getName(), module.getIcon().create());
-        tile.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
         tile.addClassName("dk-module-tile");
-
-        // Для вирівнювання іконки/тексту по лівому краю (стилі — у CSS)
-        tile.addClassName("dk-module-tile--left");
 
         tile.addClickListener(e -> UI.getCurrent().navigate(module.getRoute()));
         tile.setAriaLabel("Відкрити модуль: " + module.getName());

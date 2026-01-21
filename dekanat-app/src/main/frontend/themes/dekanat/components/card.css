@@ -1,4 +1,8 @@
-.dk-module-tile {
+vaadin-button.dk-module-tile {
+    width: 100%;
+}
+
+vaadin-button.dk-module-tile::part(button) {
     height: 86px;
     width: 100%;
     padding: 18px;
@@ -9,26 +13,37 @@
     border: 1px solid var(--dk-border);
     border-radius: 16px;
 
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 12px;
+    text-align: left;
+
     box-shadow: var(--lumo-box-shadow-s);
     transition: transform 120ms ease, box-shadow 120ms ease, border-color 120ms ease;
 }
 
-/* Робимо кнопку схожою на плитку (Vaadin Button всередині має свій layout) */
-.dk-module-tile--left {
-    justify-content: flex-start;
-    text-align: left;
-}
-
-/* Hover */
-.dk-module-tile:not(.dk-module-tile--placeholder):hover {
+vaadin-button.dk-module-tile:hover::part(button) {
     transform: translateY(-1px);
     box-shadow: var(--lumo-box-shadow-m);
     border-color: color-mix(in srgb, var(--dk-accent) 35%, var(--dk-border));
 }
 
+vaadin-button.dk-module-tile::part(label) {
+    font-weight: 600;
+    white-space: normal;
+}
+
 /* Placeholder */
 .dk-module-tile--placeholder {
-    border-style: dashed;
+    height: 86px;
+    width: 100%;
+    padding: 18px;
+    box-sizing: border-box;
+    background: var(--dk-surface);
+    color: var(--dk-text);
+    border: 1px dashed var(--dk-border);
+    border-radius: 16px;
     opacity: 0.35;
     box-shadow: none;
 }
