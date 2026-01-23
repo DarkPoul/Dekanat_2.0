@@ -4,7 +4,7 @@ import com.esvar.dekanat.uikit.AppModuleDescriptor;
 import com.esvar.dekanat.uikit.layout.AppShellLayout;
 import com.esvar.dekanat.uikit.layout.BaseView;
 import com.esvar.dekanat.uikit.util.ModuleRegistry;
-import com.vaadin.flow.component.UI;
+import com.vaadin.flow.component.AttachEvent;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H2;
@@ -24,7 +24,6 @@ public class HomeView extends BaseView {
     private static final int PAGE_SIZE = COLS * ROWS;
 
     private final List<AppModuleDescriptor> modules;
-
     private int offset = 0;
 
     private final Button upBtn = new Button("▲");
@@ -34,12 +33,11 @@ public class HomeView extends BaseView {
     public HomeView(ModuleRegistry registry) {
         this.modules = registry.all();
 
-        addClassName("dk-home"); // hook для view css
+        addClassName("dk-home");
 
         H2 title = new H2("Головна");
         title.addClassName("dk-home__title");
 
-        // grid (тільки layout-стилі або клас; все оформлення - в CSS)
         grid.addClassName("dk-home__grid");
 
         Div viewport = new Div(grid);
@@ -64,12 +62,26 @@ public class HomeView extends BaseView {
         root.setPadding(false);
         root.setSpacing(false);
         root.setWidthFull();
+        root.setSizeFull();
+
+        // по центру по горизонталі
         root.setDefaultHorizontalComponentAlignment(FlexComponent.Alignment.CENTER);
 
+        // порядок: заголовок, ▲, сітка, ▼
         root.add(title, upBtn, viewport, downBtn);
-        add(root);
 
-        render();
+        // viewport розтягується, тому ▼ сяде вниз, а весь блок буде центрований CSS-ом
+        root.expand(viewport);
+
+        add(root);
+    }
+
+    @Override
+    protected void onAttach(AttachEvent attachEvent) {
+        super.onAttach(attachEvent);
+        if (attachEvent.isInitialAttach()) {
+            render();
+        }
     }
 
     private void setupArrow(Button b, boolean isUp) {
@@ -82,8 +94,7 @@ public class HomeView extends BaseView {
         grid.removeAll();
 
         if (modules.isEmpty()) {
-            Div empty = new Div();
-            empty.setText("Немає доступних модулів.");
+            Div empty = new Div("Немає доступних модулів.");
             empty.addClassName("dk-home__empty");
             grid.add(empty);
 
@@ -100,7 +111,6 @@ public class HomeView extends BaseView {
             grid.add(createModuleTile(m));
         }
 
-        // placeholders щоб сітка не стрибала
         int placeholders = PAGE_SIZE - visible.size();
         for (int i = 0; i < placeholders; i++) {
             grid.add(createPlaceholderTile());
@@ -112,24 +122,20 @@ public class HomeView extends BaseView {
     }
 
     private void syncArrowState() {
-        // просто клас для CSS, щоб робити opacity/disabled-ефект централізовано
         toggleDisabledClass(upBtn);
         toggleDisabledClass(downBtn);
     }
 
     private void toggleDisabledClass(Button b) {
-        if (b.isEnabled()) {
-            b.removeClassName("is-disabled");
-        } else {
-            b.addClassName("is-disabled");
-        }
+        if (b.isEnabled()) b.removeClassName("is-disabled");
+        else b.addClassName("is-disabled");
     }
 
     private Button createModuleTile(AppModuleDescriptor module) {
         Button tile = new Button(module.getName(), module.getIcon().create());
         tile.addClassName("dk-module-tile");
 
-        tile.addClickListener(e -> UI.getCurrent().navigate(module.getRoute()));
+        tile.addClickListener(e -> getUI().ifPresent(ui -> ui.navigate(module.getRoute())));
         tile.setAriaLabel("Відкрити модуль: " + module.getName());
         return tile;
     }

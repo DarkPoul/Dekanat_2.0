@@ -3,9 +3,14 @@ vaadin-button.dk-module-tile {
 }
 
 vaadin-button.dk-module-tile::part(button) {
-    height: 86px;
+    /* ДОВШІ плитки:
+       - мінімум 92px (було ~74)
+       - росте з екраном
+       - максимум 150px */
+    height: clamp(92px, 11vh, 150px);
+
     width: 100%;
-    padding: 18px;
+    padding: clamp(16px, 2.4vh, 26px);
     box-sizing: border-box;
 
     background: var(--dk-surface);
@@ -20,30 +25,41 @@ vaadin-button.dk-module-tile::part(button) {
     text-align: left;
 
     box-shadow: var(--lumo-box-shadow-s);
-    transition: transform 120ms ease, box-shadow 120ms ease, border-color 120ms ease;
+    transition: transform 120ms ease, box-shadow 120ms ease, border-color 120ms ease, background 120ms ease;
 }
 
 vaadin-button.dk-module-tile:hover::part(button) {
     transform: translateY(-1px);
     box-shadow: var(--lumo-box-shadow-m);
     border-color: color-mix(in srgb, var(--dk-accent) 35%, var(--dk-border));
+    background: color-mix(in srgb, var(--dk-surface) 92%, var(--dk-accent) 8%);
+}
+
+vaadin-button.dk-module-tile:active::part(button) {
+    transform: translateY(0px);
 }
 
 vaadin-button.dk-module-tile::part(label) {
-    font-weight: 600;
+    font-weight: 650;
     white-space: normal;
+    line-height: 1.15;
+}
+
+vaadin-button.dk-module-tile vaadin-icon {
+    opacity: 0.9;
 }
 
 /* Placeholder */
 .dk-module-tile--placeholder {
-    height: 86px;
+    height: clamp(92px, 11vh, 150px);
     width: 100%;
-    padding: 18px;
+    padding: clamp(16px, 2.4vh, 26px);
     box-sizing: border-box;
-    background: var(--dk-surface);
-    color: var(--dk-text);
-    border: 1px dashed var(--dk-border);
+
+    background: color-mix(in srgb, var(--dk-surface) 90%, transparent);
+    border: 1px dashed color-mix(in srgb, var(--dk-border) 80%, transparent);
     border-radius: 16px;
-    opacity: 0.35;
+
+    opacity: 0.28;
     box-shadow: none;
 }

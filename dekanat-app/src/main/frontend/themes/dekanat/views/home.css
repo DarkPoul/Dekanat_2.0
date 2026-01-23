@@ -1,55 +1,92 @@
+/* ===== Home layout ===== */
+
 .dk-home__root {
     width: 100%;
-    padding: 12px 18px;
+    min-height: 100%;
     box-sizing: border-box;
+
+    padding: 18px 20px;
+
+    /* КЛЮЧ: центр всього блоку відносно екрана */
+    justify-content: center;
+    align-items: center;
 }
 
+/* заголовок */
 .dk-home__title {
-    margin: 8px 0 12px 0;
+    margin: 0 0 10px 0;
+    font-weight: 700;
+    letter-spacing: 0.2px;
     color: var(--dk-text);
 }
 
+/* viewport тримає сітку та відступи */
 .dk-home__viewport {
     width: 100%;
+    flex: 1;
+
     display: flex;
-    justify-content: center;
-    overflow: hidden;
-    padding: 8px 0;
+    justify-content: center; /* сітка по центру */
+    align-items: center;
+
+    box-sizing: border-box;
+    padding: 18px 0;
 }
 
+/* сітка */
 .dk-home__grid {
-    width: min(980px, 100%);
+    width: min(1180px, 100%); /* росте під екран */
+    box-sizing: border-box;
+
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 18px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px 22px;
+
+    align-items: stretch;
 }
+
+/* empty-state */
+.dk-home__empty {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 18px;
+    border-radius: 16px;
+    border: 1px dashed var(--dk-border);
+    background: color-mix(in srgb, var(--dk-surface) 90%, transparent);
+    color: color-mix(in srgb, var(--dk-text) 75%, transparent);
+}
+
+/* ===== Arrow buttons ===== */
 
 vaadin-button.dk-home__arrow {
-    width: 42px;
-    height: 42px;
+    width: 60px;
+    height: 44px;
+    padding: 0;
+    border-radius: 14px;
 }
 
 vaadin-button.dk-home__arrow::part(button) {
-    width: 42px;
-    height: 42px;
-    border-radius: 999px;
+    width: 60px;
+    height: 44px;
+    padding: 0;
+
+    background: color-mix(in srgb, var(--dk-surface) 78%, transparent);
     border: 1px solid var(--dk-border);
-    color: var(--dk-text);
-    background: var(--dk-surface);
-    box-shadow: var(--lumo-box-shadow-xs);
+    border-radius: 14px;
+
+    box-shadow: none;
+    transition: transform 120ms ease, border-color 120ms ease, background 120ms ease;
 }
 
-vaadin-button.dk-home__arrow.is-disabled::part(button) {
+vaadin-button.dk-home__arrow:hover::part(button) {
+    transform: translateY(-1px);
+    border-color: color-mix(in srgb, var(--dk-accent) 28%, var(--dk-border));
+    background: color-mix(in srgb, var(--dk-surface) 88%, var(--dk-accent) 12%);
+}
+
+vaadin-button.dk-home__arrow.is-disabled::part(button),
+vaadin-button.dk-home__arrow[disabled]::part(button) {
     opacity: 0.35;
-}
-
-/* Empty state */
-.dk-home__empty {
-    padding: 24px;
-    border: 1px dashed var(--dk-border);
-    border-radius: 16px;
-    width: min(980px, 100%);
-    text-align: center;
-    color: var(--dk-text-2);
-    background: var(--dk-surface);
+    transform: none;
+    cursor: default;
 }

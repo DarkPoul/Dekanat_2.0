@@ -1,0 +1,161 @@
+/* Фон шапки */
+.dk-topbar {
+    background-color: var(--dk-efh-3);
+    border-bottom: 1px solid rgba(0,0,0,0.10);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.08), 0 2px 6px rgba(0,0,0,0.06);
+    border-radius: 0 0 12px 12px;
+    width: 100%;
+}
+
+/* Контент шапки: max ширина + нормальний ритм */
+.dk-topbar__row {
+    width: 100%;
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    box-sizing: border-box;
+}
+
+/* Заголовок: зробити менше і акуратніше (H1 зараз занадто "важкий") */
+.dk-topbar__title {
+    font-size: var(--lumo-font-size-xl);
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    line-height: 1.1;
+    flex-shrink: 0;
+    min-width: 150px;
+}
+
+/* ComboBox — головний елемент */
+.dk-topbar__group {
+    width: min(620px, 60vw);
+    min-width: 320px;
+    max-width: 640px;
+    flex-shrink: 0;
+    margin: 0 20px; /* Трохи відступу від розпірок */
+}
+
+/* Скруглення поля вводу ComboBox і м'якша підкладка */
+.dk-topbar__group::part(input-field) {
+    border-radius: 12px;
+}
+
+/* Правий блок як "pill row" */
+.dk-topbar__right {
+    /* Це допоможе флексу зрозуміти, що треба піти вправо, якщо spacer не спрацював */
+    margin-left: auto;
+    display: inline-flex;
+    gap: 10px;
+    align-items: center;
+    flex-shrink: 0; /* Щоб блок не стискався, якщо екран малий */
+    justify-content: flex-end;
+    min-width: 250px; /* Бажано, щоб була близька до ширини лівої частини */
+
+}
+
+
+.dk-topbar__left {
+    justify-self: start;
+    min-width: 0;
+}
+
+.dk-topbar__center {
+    justify-self: center;
+    min-width: 0;
+}
+
+/* Твій бейдж — зробимо трішки більш "дорогим" на кольоровому фоні */
+.dk-badge {
+    height: 34px;
+    padding: 0 12px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+
+    /* на зеленому фоні чорний бордер виглядає брудно */
+    border: 1px solid rgba(255,255,255,0.18);
+    background: rgba(255,255,255,0.14);
+    color: rgba(255,255,255,0.92);
+
+    font-size: var(--lumo-font-size-s);
+    line-height: 1;
+    backdrop-filter: blur(8px);
+}
+
+/* Кнопка допомоги в тій самій мові, що бейдж */
+.dk-topbar .dk-help-btn {
+    height: 34px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.18);
+    background: rgba(255,255,255,0.10);
+    color: rgba(255,255,255,0.95);
+    padding: 0 12px;
+}
+
+.dk-topbar .dk-help-btn:hover {
+    background: rgba(255,255,255,0.16);
+}
+
+/* Змінюємо колір тексту обраного значення в ComboBox */
+.dk-topbar__group::part(input-field) {
+    color: var(--dk-text-2); /* Або використовуйте ваші змінні, наприклад var(--lumo-primary-contrast-color) */
+}
+
+/* Базовий бейдж (спільні стилі) */
+.dk-badge {
+    height: 34px;
+    padding: 0 14px;
+    border-radius: 999px;
+    font-size: var(--lumo-font-size-s);
+    font-weight: 500;
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Іконки всередині бейджа */
+.dk-badge vaadin-icon {
+    width: 16px;
+    height: 16px;
+}
+
+/* Зимова сесія — Блакитний */
+.dk-badge--winter {
+    background: rgba(0, 150, 255, 0.15);
+    border: 1px solid rgba(0, 180, 255, 0.5);
+    color: #99d6ff; /* Світло-блакитний текст */
+}
+
+.dk-badge--winter vaadin-icon {
+    color: #00b4ff; /* Яскраво-блакитна сніжинка */
+}
+
+/* Літня сесія — Жовтий */
+.dk-badge--summer {
+    background: rgba(255, 200, 0, 0.15);
+    border: 1px solid rgba(255, 220, 0, 0.6);
+    color: #ffeb99; /* Світло-жовтий текст */
+}
+
+.dk-badge--summer vaadin-icon {
+    color: #ffcc00; /* Золотисте сонечко */
+}
+
+/* Якщо ви хочете, щоб текст був світлим тільки коли він введений/обраний */
+/*.dk-topbar__group vaadin-text-field-container [part="value"] {*/
+/*    color: white;*/
+/*}*/
+
+/*!* Також варто підправити колір плейсхолдера, щоб він був читабельним на темному фоні *!*/
+/*.dk-topbar__group::part(input-field)::placeholder {*/
+/*    color: rgba(255, 255, 255, 0.5);*/
+/*}*/
+
+/*!* Оскільки ComboBox використовує input всередині, це найнадійніший спосіб *!*/
+/*.dk-topbar__group input {*/
+/*    color: white !important;*/
+/*    -webkit-text-fill-color: white !important; !* Для Chrome/Safari *!*/
+/*}*/

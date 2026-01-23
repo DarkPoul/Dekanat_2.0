@@ -1,9 +1,9 @@
 :root {
-    --dk-bg:       var(--dk-gray-50);
+    --dk-bg:       var(--dk-efh-1);
     --dk-surface:  #ffffff;
 
     --dk-text:     #1f2937;
-    --dk-text-2:   #4b5563;
+    --dk-text-2:   #DCF5E3;
 
     --dk-border:   rgba(0,0,0,0.08);
 

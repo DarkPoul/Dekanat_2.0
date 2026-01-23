@@ -4,6 +4,7 @@
 
 @import url("./components/card.css");
 @import url("./views/home.css");
+@import url("./views/appshell.css");
 
 html, body {
     background: var(--dk-bg);
