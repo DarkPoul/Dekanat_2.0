@@ -23,7 +23,7 @@
 /* viewport тримає сітку та відступи */
 .dk-home__viewport {
     width: 100%;
-    flex: 1;
+    flex: 0 0 auto;
 
     display: flex;
     justify-content: center; /* сітка по центру */

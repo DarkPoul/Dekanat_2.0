@@ -3,14 +3,14 @@ vaadin-button.dk-module-tile {
 }
 
 vaadin-button.dk-module-tile::part(button) {
-    /* ДОВШІ плитки:
-       - мінімум 92px (було ~74)
+    /* ВИЩІ плитки:
+       - мінімум 120px
        - росте з екраном
-       - максимум 150px */
-    height: clamp(92px, 11vh, 150px);
+       - максимум 180px */
+    height: clamp(120px, 15vh, 180px);
 
     width: 100%;
-    padding: clamp(16px, 2.4vh, 26px);
+    padding: clamp(18px, 2.8vh, 28px);
     box-sizing: border-box;
 
     background: var(--dk-surface);
@@ -51,9 +51,9 @@ vaadin-button.dk-module-tile vaadin-icon {
 
 /* Placeholder */
 .dk-module-tile--placeholder {
-    height: clamp(92px, 11vh, 150px);
+    height: clamp(120px, 15vh, 180px);
     width: 100%;
-    padding: clamp(16px, 2.4vh, 26px);
+    padding: clamp(18px, 2.8vh, 28px);
     box-sizing: border-box;
 
     background: color-mix(in srgb, var(--dk-surface) 90%, transparent);
