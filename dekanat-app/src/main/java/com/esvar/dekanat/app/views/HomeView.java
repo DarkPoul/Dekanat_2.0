@@ -70,8 +70,7 @@ public class HomeView extends BaseView {
         // порядок: заголовок, ▲, сітка, ▼
         root.add(title, upBtn, viewport, downBtn);
 
-        // viewport розтягується, тому ▼ сяде вниз, а весь блок буде центрований CSS-ом
-        root.expand(viewport);
+        // viewport не розтягуємо, щоб вся група була по центру екрана
 
         add(root);
     }
